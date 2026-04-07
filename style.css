@@ -1,14 +1,37 @@
+/* --- ПЕРЕМЕННЫЕ --- */
 :root {
-    --accent: #3498db;    /* Можно сменить на #2ecc71 (зеленый) или #e74c3c (красный) */
+    --accent: #3498db;
+    --accent-hover: #2980b9;
     --bg-dark: #121417;
     --card-dark: #1c1f24;
     --white: #ffffff;
+    --text-muted: #bdc3c7;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; color: var(--white); background: var(--bg-dark); }
+/* --- ОБЩИЕ СТИЛИ --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
 
-/* ПОЛНОЭКРАННЫЕ СЕКЦИИ */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    z-index: 5;
+}
+
 .fullscreen-section {
     min-height: 100vh;
     width: 100%;
@@ -16,32 +39,49 @@ body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; color: var(--w
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 60px 20px;
+    padding: 80px 0;
 }
 
-.container { width: 100%; max-width: 1100px; z-index: 5; }
 .content-box { text-align: center; width: 100%; }
 
-/* ХЕДЕР */
-.header-bg { background: url('bg.jpg') no-repeat center center/cover; }
-.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); }
+/* --- ЗАГОЛОВКИ --- */
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin: 0; }
+.section-title { 
+    font-size: clamp(1.8rem, 5vw, 2.5rem); 
+    font-weight: 800; 
+    margin-bottom: 40px; 
+    text-transform: uppercase; 
+}
 .highlight { color: var(--accent); }
-h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin: 0; }
-.section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 40px; text-transform: uppercase; color: inherit; }
 
-/* КНОПКИ */
+/* --- ХЕДЕР --- */
+.header-bg { background: url('bg.jpg') no-repeat center center/cover; }
+.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 1; }
+
 .header-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap; }
-.btn { padding: 16px 32px; border-radius: 50px; text-decoration: none; color: #fff; font-weight: bold; transition: 0.3s; display: flex; align-items: center; justify-content: center; min-width: 180px; }
+.btn { 
+    padding: 16px 32px; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    color: #fff; 
+    font-weight: bold; 
+    transition: 0.3s; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    min-width: 200px;
+}
+.btn i { margin-right: 10px; }
 .btn-whatsapp { background: #25D366; }
 .btn-telegram { background: #0088cc; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
-/* ЦВЕТА СЕКЦИЙ */
-.white-bg { background: #fff; color: #1a1c1e; }
+/* --- ЦВЕТА СЕКЦИЙ --- */
+.white-bg { background: #ffffff; color: #1a1c1e; }
 .light-bg { background: #f8f9fa; color: #1a1c1e; }
 .dark-bg { background: var(--bg-dark); color: #fff; }
 
-/* ГРИДЫ (СЕТКИ) */
+/* --- УСЛУГИ И ОТЗЫВЫ (СЕТКИ) --- */
 .services-grid, .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -55,72 +95,67 @@ h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 900; margin: 0; }
     border: 1px solid rgba(255,255,255,0.1);
     transition: 0.3s;
 }
+
 .white-bg .service-item { background: #fff; border-color: #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .service-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
 
-/* ПРАЙС-ЛИСТ */
-.price-list { max-width: 700px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-.price-row { display: flex; justify-content: space-between; padding: 18px 10px; border-bottom: 1px solid #eee; font-weight: 700; font-size: 1.1rem; }
-.price-value { color: var(--accent); }
-.price-note { margin-top: 20px; font-size: 0.9rem; color: #888; font-style: italic; }
-
-/* ОТЗЫВЫ */
 .review-card { background: var(--card-dark); text-align: left; }
 .stars { color: #f1c40f; margin-bottom: 15px; }
 .review-author { display: block; margin-top: 15px; font-weight: bold; color: var(--accent); }
 
-/* КОМПАКТНАЯ КАРТА */
+/* --- ПРАЙС-ЛИСТ --- */
+.price-list { 
+    max-width: 700px; 
+    margin: 0 auto; 
+    background: #fff; 
+    padding: 25px; 
+    border-radius: 25px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+}
+.price-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 18px 10px; 
+    border-bottom: 1px solid #eee; 
+    font-weight: 700; 
+    font-size: 1.1rem; 
+}
+.price-row:last-child { border-bottom: none; }
+.price-value { color: var(--accent); white-space: nowrap; }
+.price-note { margin-top: 20px; font-size: 0.9rem; color: #888; font-style: italic; }
+
+/* --- КОМПАКТНАЯ КАРТА --- */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Карта чуть шире текста */
+    grid-template-columns: 1fr 1.5fr;
     gap: 30px;
     align-items: center;
-}
-
-.contact-card {
-    background: #f8f9fa;
-    padding: 40px;
-    border-radius: 25px;
     text-align: left;
-    border: 1px solid #eee;
 }
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.contact-item i {
-    font-size: 1.5rem;
-    color: var(--accent);
-}
-
-.contact-item p {
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.4;
-    color: #333;
-}
+.contact-card { background: #f8f9fa; padding: 35px; border-radius: 25px; border: 1px solid #eee; }
+.contact-item { display: flex; gap: 15px; margin-bottom: 20px; }
+.contact-item i { color: var(--accent); font-size: 1.3rem; }
+.contact-item p { color: #333; font-weight: 600; }
 
 .map-frame {
     height: 400px;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* АДАПТИВ ДЛЯ МОБИЛОК */
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ (ФИНАЛ) --- */
 @media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr; /* На телефоне друг под другом */
-    }
-    .map-frame {
-        height: 300px;
-    }
-    .contact-card {
-        padding: 25px;
-    }
+    .fullscreen-section { height: auto; min-height: 100vh; padding: 60px 15px; }
+    
+    .section-title { font-size: 1.5rem; line-height: 1.2; }
+    
+    .price-row { font-size: 0.95rem; }
+    
+    .contact-grid { grid-template-columns: 1fr; }
+    .map-frame { height: 300px; }
+    
+    .btn { width: 100%; }
 }
